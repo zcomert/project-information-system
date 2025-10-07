@@ -1,0 +1,14 @@
+﻿@model List<Person>
+
+<ul>
+@foreach(var item in Model)
+{
+    
+        <li>@item.Id</li>
+        <li>@item.FirstName @item.LastName</li>
+        <li>@item.Salary</li>
+        <hr />
+
+    
+}
+</ul>
