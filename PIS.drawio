@@ -13,8 +13,14 @@
         <mxCell id="Bxe-ouqgf_bkoK39uHbJ-1" value="master" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="150" y="300" width="80" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="Bxe-ouqgf_bkoK39uHbJ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Bxe-ouqgf_bkoK39uHbJ-3" target="Bxe-ouqgf_bkoK39uHbJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="Bxe-ouqgf_bkoK39uHbJ-3" value="model-binding" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="385" y="130" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Bxe-ouqgf_bkoK39uHbJ-6" value="master" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="445" y="330" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
