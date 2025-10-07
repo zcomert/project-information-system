@@ -8,4 +8,10 @@ public class MbController : Controller
     {
         return View();
     }
+
+    public IActionResult Introduce()
+    {
+        var name = "Zafer CÖMERT";
+        return View("Introduce", name);
+    }
 }
