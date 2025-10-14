@@ -48,7 +48,7 @@ public class MbController : Controller
             "Şanlıurfa",
             "Ankara",
             "Tokat",
-            "Çorum",
+            "Corum",
             "Hatay"
         };
         return View(cities);
