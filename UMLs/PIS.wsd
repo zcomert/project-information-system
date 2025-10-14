@@ -13,10 +13,23 @@ package PIS.Models
     class ProjectManager
     {
         -_list:List<Project>
+        +GetAll():List<Project>
     }
 }
 
+package PIS.Controllers 
+{
+    class ProjectManagerController{
+        +Index():IActionResult
+    }
+}
+
+class Controller{}
+
 ProjectManager - Project : > "manages"
+ProjectManagerController -up-|> Controller : "<<extends>>"
+
+
 
 hide empty members
 @enduml

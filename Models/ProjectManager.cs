@@ -27,5 +27,8 @@
                 }
             };
         }
+        public List<Project> GetAll() => _list;
+       
+        
     }
 }
