@@ -1,0 +1,23 @@
+@startuml
+title PIS
+
+package PIS.Models
+{
+    class Project{
+        +Id:int
+        +Title:String
+        +Budge:decimal
+    }
+
+    class ProjectManager
+    {
+        -_list:List<Project>
+        --
+        +ProjectManager()
+        +GetAll():List<Project>
+    }
+}
+
+ProjectManager - Project : "manages" 
+hide empty members
+@enduml
