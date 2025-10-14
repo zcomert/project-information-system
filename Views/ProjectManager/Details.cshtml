@@ -1,0 +1,24 @@
+﻿@model Project
+<h1>Proje Detayları</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Özellik</th>
+            <th>Değer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Proje Adı</td>
+            <td>@Model.Title</td>
+        </tr>
+        <tr>
+            <td>Bütçe</td>
+            <td>@Model.Budget.ToString("C")</td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="/ProjectManager" class="btn btn-secondary">Geri Dön</a>
+
