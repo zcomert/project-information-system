@@ -1,0 +1,23 @@
+@model Project
+
+<div class="container mt-4">
+    <h2>Project Details</h2>
+    <table class="table table-striped table-hover">
+        <tbody>
+            <tr>
+                <th scope="row">ID</th>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <th scope="row">Title</th>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <th scope="row">Budget</th>
+                <td>@Model.Budget</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/ProjectManager/Index" class="btn btn-primary mt-3">Back to Index</a>
+</div>
+
