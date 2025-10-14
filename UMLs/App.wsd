@@ -18,6 +18,14 @@ package PIS.Models
     }
 }
 
-ProjectManager - Project : "manages" 
+package PIS.Controllers
+{
+    class ProjectController
+    {
+        + Index() : IActionResult
+    }
+}
+
+ProjectManager - Project :  > "manages" 
 hide empty members
 @enduml
