@@ -10,7 +10,12 @@ Proje Listesi
                 <div class="card-body">
                     <h5 class="card-title">@project.Title</h5>
                     <p class="card-text">@project.Budget</p>
-                    <a href="/Project/Details/@project.Id" class="btn btn-primary">Detaylar</a>
+                    
+                    
+                    <a asp-controller="ProjectManager" 
+                        asp-action="Details" 
+                        asp-route-id="@project.Id"
+                        class="btn btn-primary">Detaylar</a>
                 </div>
             </div>
         </div>
