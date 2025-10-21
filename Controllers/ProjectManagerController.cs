@@ -49,5 +49,32 @@ namespace PIS.Controllers
             var created = manager.Create(project);
             return RedirectToAction(nameof(Details), new { id = created.Id });
         }
+
+        [HttpGet]
+        public IActionResult Update([FromRoute(Name = "id")] int id)
+        {
+            var manager = new ProjectManager();
+            var project = manager.GetById(id);
+            if (project is null)
+                return NotFound();
+            return View(project);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Project project)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(project);
+            }
+
+            var manager = new ProjectManager();
+            var ok = manager.Update(project);
+            if (!ok)
+                return NotFound();
+
+            return RedirectToAction(nameof(Details), new { id = project.Id });
+        }
     }
 }

@@ -20,6 +20,10 @@
                         asp-action="Details"
                         asp-route-id="@project.Id"
                         class="btn btn-primary">Detaylar  </a>
+                        <a asp-controller="ProjectManager"
+                           asp-action="Update"
+                           asp-route-id="@project.Id"
+                           class="btn btn-warning ms-2">Güncelleme</a>
                     </div>
                 </div>
             </div>

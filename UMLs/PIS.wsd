@@ -29,6 +29,8 @@ package PIS.Controllers
         +Details(id:int):IActionResult
         +Create():IActionResult
         +Create(project:Project):IActionResult
+        +Update(id:int):IActionResult
+        +Update(project:Project):IActionResult
     }
 }
 
