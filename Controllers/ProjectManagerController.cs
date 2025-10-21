@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using PIS.Models;
 
 namespace PIS.Controllers
@@ -28,7 +28,26 @@ namespace PIS.Controllers
             //var project = list1.FirstOrDefault(p => p.Id == id);
             return View(project);
         }
-        
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var model = new Project();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Project project)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(project);
+            }
+
+            var manager = new ProjectManager();
+            var created = manager.Create(project);
+            return RedirectToAction(nameof(Details), new { id = created.Id });
+        }
     }
 }

@@ -2,30 +2,33 @@ namespace PIS.Models
 {
     public class ProjectManager
     {
-        private List<Project> _list;
+        private static List<Project> _list;
         public ProjectManager()
         {
-            _list = new List<Project>()
+            if (_list == null)
             {
-                new Project()
+                _list = new List<Project>()
                 {
-                    Id = 1,
-                    Title = "Hyperloop",
-                    Budget = 100_000M
-                },
-                new Project()
-                {
-                    Id = 2,
-                    Title = "Starship",
-                    Budget = 200_000
-                },
-                new Project()
-                {
-                    Id = 3,
-                    Title = "Insansiz Yasam",
-                    Budget = 50_000_000
-                }
-            };
+                    new Project()
+                    {
+                        Id = 1,
+                        Title = "Hyperloop",
+                        Budget = 100_000M
+                    },
+                    new Project()
+                    {
+                        Id = 2,
+                        Title = "Starship",
+                        Budget = 200_000
+                    },
+                    new Project()
+                    {
+                        Id = 3,
+                        Title = "Insansiz Yasam",
+                        Budget = 50_000_000
+                    }
+                };
+            }
         }
 
         // READ: Tüm projeleri getir
@@ -62,7 +65,7 @@ namespace PIS.Models
 
             var existing = _list
                 .FirstOrDefault(p => p.Id == project.Id);
-            
+
             if (existing is null)
                 return false;
 
@@ -81,7 +84,7 @@ namespace PIS.Models
                 return false;
 
             _list.Remove(existing);
-            
+
             return true;
         }
     }

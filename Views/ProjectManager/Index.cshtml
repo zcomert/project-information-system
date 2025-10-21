@@ -1,6 +1,10 @@
 ﻿@model List<Project>
 <h1>Proje Listesi</h1>
 
+<div class="mb-3">
+    <a asp-controller="ProjectManager" asp-action="Create" class="btn btn-success">Yeni Proje</a>
+    </div>
+
 <div class="container">
     <div class="row">
         @foreach (var project in Model)
