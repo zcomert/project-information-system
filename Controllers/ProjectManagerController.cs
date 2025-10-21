@@ -5,17 +5,22 @@ namespace PIS.Controllers
 {
     public class ProjectManagerController : Controller
     {
+        private readonly ProjectManager _manager;
+
+        public ProjectManagerController(ProjectManager manager)
+        {
+            _manager = manager;
+        }
+
         public IActionResult Index()
         {
-            var manager = new ProjectManager();
-            var list1 = manager.GetAll();
+            var list1 = _manager.GetAll();
             return View(list1);
         }
 
         public IActionResult Details([FromRoute(Name = "id")] int id)
         {
-            var manager = new ProjectManager();
-            var list1 = manager.GetAll();
+            var list1 = _manager.GetAll();
             var project = new Project();
             foreach (var item in list1)
             {
@@ -45,16 +50,14 @@ namespace PIS.Controllers
                 return View(project);
             }
 
-            var manager = new ProjectManager();
-            var created = manager.Create(project);
+            var created = _manager.Create(project);
             return RedirectToAction(nameof(Details), new { id = created.Id });
         }
 
         [HttpGet]
         public IActionResult Update([FromRoute(Name = "id")] int id)
         {
-            var manager = new ProjectManager();
-            var project = manager.GetById(id);
+            var project = _manager.GetById(id);
             if (project is null)
                 return NotFound();
             return View(project);
@@ -69,8 +72,7 @@ namespace PIS.Controllers
                 return View(project);
             }
 
-            var manager = new ProjectManager();
-            var ok = manager.Update(project);
+            var ok = _manager.Update(project);
             if (!ok)
                 return NotFound();
 
@@ -80,8 +82,7 @@ namespace PIS.Controllers
         [HttpGet]
         public IActionResult Delete([FromRoute(Name = "id")] int id)
         {
-            var manager = new ProjectManager();
-            var project = manager.GetById(id);
+            var project = _manager.GetById(id);
             if (project is null)
                 return NotFound();
             return View(project);
@@ -92,8 +93,7 @@ namespace PIS.Controllers
         [ActionName("Delete")]
         public IActionResult DeleteConfirmed([FromForm] int id)
         {
-            var manager = new ProjectManager();
-            var ok = manager.Delete(id);
+            var ok = _manager.Delete(id);
             if (!ok)
                 return NotFound();
             return RedirectToAction(nameof(Index));

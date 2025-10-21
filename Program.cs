@@ -1,7 +1,11 @@
+using PIS.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Register ProjectManager as a singleton for DI
+builder.Services.AddSingleton<ProjectManager>();
 
 var app = builder.Build();
 
