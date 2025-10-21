@@ -76,5 +76,27 @@ namespace PIS.Controllers
 
             return RedirectToAction(nameof(Details), new { id = project.Id });
         }
+
+        [HttpGet]
+        public IActionResult Delete([FromRoute(Name = "id")] int id)
+        {
+            var manager = new ProjectManager();
+            var project = manager.GetById(id);
+            if (project is null)
+                return NotFound();
+            return View(project);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public IActionResult DeleteConfirmed([FromForm] int id)
+        {
+            var manager = new ProjectManager();
+            var ok = manager.Delete(id);
+            if (!ok)
+                return NotFound();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

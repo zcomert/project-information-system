@@ -1,16 +1,16 @@
-﻿@model Project
-<h1>Proje Detayları</h1>
+@model Project
+<h1>Proje Detaylari</h1>
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>Özellik</th>
-            <th>Değer</th>
+            <th>Deger</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Proje Adı</td>
+            <td>Proje Adi</td>
             <td>@Model.Title</td>
         </tr>
         <tr>
@@ -18,7 +18,8 @@
             <td>@Model.Budget.ToString("C")</td>
         </tr>
     </tbody>
-</table>
+    </table>
 
 <a href="/ProjectManager" class="btn btn-secondary">Geri Dön</a>
+<a asp-controller="ProjectManager" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger ms-2">Sil</a>
 
