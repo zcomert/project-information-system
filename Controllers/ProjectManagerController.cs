@@ -12,12 +12,12 @@ namespace PIS.Controllers
             return View(list1);
         }
 
-        public IActionResult Details([FromRoute(Name ="id")] int id)
+        public IActionResult Details([FromRoute(Name = "id")] int id)
         {
             var manager = new ProjectManager();
             var list1 = manager.GetAll();
             var project = new Project();
-            foreach(var item in list1)
+            foreach (var item in list1)
             {
                 if (item.Id == id)
                 {
@@ -28,5 +28,7 @@ namespace PIS.Controllers
             //var project = list1.FirstOrDefault(p => p.Id == id);
             return View(project);
         }
+        
+
     }
 }

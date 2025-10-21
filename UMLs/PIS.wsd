@@ -13,7 +13,12 @@ package PIS.Models
     class ProjectManager
     {
         -_list:List<Project>
+        
         +GetAll():List<Project>
+        +Create(project:Project):Project
+        +GetById(id:int):Project
+        +Update(project:Project):bool
+        +Delete(id:int):bool
     }
 }
 
