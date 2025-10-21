@@ -24,7 +24,7 @@
         <mxCell id="Bxe-ouqgf_bkoK39uHbJ-3" value="model-binding" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="320" y="110" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Bxe-ouqgf_bkoK39uHbJ-6" value="model-binding" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="Bxe-ouqgf_bkoK39uHbJ-6" value="project-model" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="470" y="150" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BesWWunmjQ2YyXoMwg77-7" value="V3.1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="BesWWunmjQ2YyXoMwg77-3" target="BesWWunmjQ2YyXoMwg77-6" edge="1">
@@ -51,8 +51,17 @@
         <mxCell id="FSV48-3KRRJ3nzSRF1kN-1" value="update-project" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="1030" y="280" width="80" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="uiyzwxa_gkNNw2mxnCkh-3" value="v3.5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FSV48-3KRRJ3nzSRF1kN-3" target="uiyzwxa_gkNNw2mxnCkh-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="FSV48-3KRRJ3nzSRF1kN-3" value="delete-project" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="1170" y="280" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uiyzwxa_gkNNw2mxnCkh-2" value="v3.6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FSV48-3KRRJ3nzSRF1kN-5" target="uiyzwxa_gkNNw2mxnCkh-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uiyzwxa_gkNNw2mxnCkh-1" value="landing-page" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="280" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
