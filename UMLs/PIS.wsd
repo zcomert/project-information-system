@@ -26,6 +26,9 @@ package PIS.Controllers
 {
     class ProjectManagerController{
         +Index():IActionResult
+        +Details(id:int):IActionResult
+        +Create():IActionResult
+        +Create(project:Project):IActionResult
     }
 }
 
@@ -33,6 +36,7 @@ class Controller{}
 
 ProjectManager - Project : > "manages"
 ProjectManagerController -up-|> Controller : "<<extends>>"
+ProjectManagerController ..> ProjectManager : "uses"
 
 
 
