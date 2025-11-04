@@ -14,14 +14,15 @@ package PIS.Models
 package PIS.Controllers 
 {
     class ProjectManagerController{
-        +Index():IActionResult
-        +Details(id:int):IActionResult
-        +Create():IActionResult
-        +Create(project:Project):IActionResult
-        +Update(id:int):IActionResult
-        +Update(project:Project):IActionResult
-        +Delete(id:int):IActionResult
-        +DeleteConfirmed(id:int):IActionResult
+        - _projectService : IProjectService
+        + Index() : IActionResult
+        + Details(id : int) : IActionResult
+        + Create() : IActionResult
+        + Create(project : Project) : IActionResult
+        + Update(id : int) : IActionResult
+        + Update(project : Project) : IActionResult
+        + Delete(id : int) : IActionResult
+        + DeleteConfirmed(id : int) : IActionResult
     }
 }
 
@@ -30,11 +31,12 @@ package PIS.Services
     class ProjectManager
     {
         - _list : List<Project>
-        + GetAll() : List<Project>
-        + Create(project : Project) : Project
+        + GetAll() : IEnumerable<Project>
         + GetById(id : int) : Project
+        + Create(project : Project) : Project
         + Update(project : Project) : bool
         + Delete(id : int) : bool
+        + Search(query : string) : IEnumerable<Project>
     }
 }
 
@@ -42,18 +44,18 @@ package PIS.Services.Contracts
 {
     interface IProjectService
     {
-        +GetAll():IEnumerable<Project>
-        +GetById(id:int):Project
-        +Create(project:Project):Project
-        +Update(project:Project):bool
-        +Delete(id:int):bool
-        +Search(query:string):IEnumerable<Project>
+        + GetAll() : IEnumerable<Project>
+        + GetById(id : int) : Project
+        + Create(project : Project) : Project
+        + Update(project : Project) : bool
+        + Delete(id : int) : bool
+        + Search(query : string) : IEnumerable<Project>
     }
 }
 
 class Controller{}
 
-ProjectManager - Project : > "manages"
+ProjectManager "1" *-- "*" Project : manages
 ProjectManagerController -up-|> Controller : "<<extends>>"
 ProjectManagerController ..> IProjectService : "uses"
 ProjectManager .up.|> IProjectService : "<<implements>>"

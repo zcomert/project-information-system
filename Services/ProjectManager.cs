@@ -1,8 +1,9 @@
 using PIS.Models;
+using PIS.Services.Contracts;
 
 namespace PIS.Services
 {
-    public class ProjectManager
+    public class ProjectManager : IProjectService
     {
         private static List<Project> _list;
         public ProjectManager()
@@ -88,6 +89,16 @@ namespace PIS.Services
             _list.Remove(existing);
 
             return true;
+        }
+
+        IEnumerable<Project> IProjectService.GetAll()
+        {
+            return GetAll();
+        }
+
+        public IEnumerable<Project> Search(string query)
+        {
+            throw new NotImplementedException();
         }
     }
 }
