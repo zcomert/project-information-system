@@ -1,4 +1,6 @@
-namespace PIS.Models
+using PIS.Models;
+
+namespace PIS.Services
 {
     public class ProjectManager
     {

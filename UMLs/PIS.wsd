@@ -9,17 +9,6 @@ package PIS.Models
         +Title:String
         +Budget:Decimal
     }
-
-    class ProjectManager
-    {
-        -_list:List<Project>
-        
-        +GetAll():List<Project>
-        +Create(project:Project):Project
-        +GetById(id:int):Project
-        +Update(project:Project):bool
-        +Delete(id:int):bool
-    }
 }
 
 package PIS.Controllers 
@@ -36,13 +25,38 @@ package PIS.Controllers
     }
 }
 
+package PIS.Services
+{
+    class ProjectManager
+    {
+        - _list : List<Project>
+        + GetAll() : List<Project>
+        + Create(project : Project) : Project
+        + GetById(id : int) : Project
+        + Update(project : Project) : bool
+        + Delete(id : int) : bool
+    }
+}
+
+package PIS.Services.Contracts
+{
+    interface IProjectService
+    {
+        +GetAll():IEnumerable<Project>
+        +GetById(id:int):Project
+        +Create(project:Project):Project
+        +Update(project:Project):bool
+        +Delete(id:int):bool
+        +Search(query:string):IEnumerable<Project>
+    }
+}
+
 class Controller{}
 
 ProjectManager - Project : > "manages"
 ProjectManagerController -up-|> Controller : "<<extends>>"
-ProjectManagerController ..> ProjectManager : "uses"
-
-
+ProjectManagerController ..> IProjectService : "uses"
+ProjectManager .up.|> IProjectService : "<<implements>>"
 
 hide empty members
 @enduml
