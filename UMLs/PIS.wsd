@@ -53,12 +53,23 @@ package PIS.Services.Contracts
     }
 }
 
+package PIS.Repositories
+{
+    class RepositoryContext
+    {
+        + Projects : DbSet<Project>
+    }
+}
+
 class Controller{}
+class DbContext{}
 
 ProjectManager "1" *-- "*" Project : manages
 ProjectManagerController -up-|> Controller : "<<extends>>"
 ProjectManagerController ..> IProjectService : "uses"
 ProjectManager .up.|> IProjectService : "<<implements>>"
+RepositoryContext -up-|> DbContext : "<<extends>>"
+RepositoryContext "1" o-- "*" Project : "DbSet<Project>"
 
 hide empty members
 @enduml
