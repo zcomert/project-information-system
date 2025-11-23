@@ -4,7 +4,7 @@
 ## Get latest from `dotnet new gitignore`
 
 UMLs/
-# ekran.jpg
+ekran.jpg@md
 Migrations/
 
 # dotenv files
