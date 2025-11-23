@@ -3,6 +3,7 @@ using PIS.Services;
 using PIS.Services.Contracts;
 using PIS.Repositories;
 using Microsoft.EntityFrameworkCore;
+using PIS.Repositories.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Register ProjectManager as a singleton for DI
-builder.Services.AddSingleton<IProjectService, ProjectManager>();
-
+builder.Services.AddScoped<IProjectService, ProjectManager>();
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
