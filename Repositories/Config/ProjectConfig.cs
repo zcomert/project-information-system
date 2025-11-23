@@ -8,6 +8,8 @@ namespace PIS.Repositories.Config
     {
         public void Configure(EntityTypeBuilder<Project> builder)
         {
+            builder.Property(p => p.Budget).HasColumnType("decimal(18, 2)");
+
             builder.HasData(
                 new Project { Id = 1, Title = "Gezgin Akıllı Robot", Budget = 750000m },
                 new Project { Id = 2, Title = "Yapay Zeka Destekli Tarım Sistemi", Budget = 1250000m },

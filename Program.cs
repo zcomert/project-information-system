@@ -18,7 +18,7 @@ builder.Services.AddScoped<IProjectPersonRepository, ProjectPersonRepository>();
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
