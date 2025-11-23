@@ -13,6 +13,7 @@ namespace PIS.Repositories;
         public DbSet<Project> Projects { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<ProjectRole> ProjectRoles { get; set; }
+        public DbSet<ProjectPerson> ProjectPersons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

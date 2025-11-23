@@ -11,7 +11,7 @@ public class ProjectPerson
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public double? Workload { get; set; }
-        public string Note { get; set; }
+        public string? Note { get; set; }
 
         public Project Project { get; set; }
         public Person Person { get; set; }

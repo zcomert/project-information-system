@@ -10,8 +10,8 @@ public class Person
     [Required]
     public string LastName { get; set; }
 
-    public string StudentNumber { get; set; }
-    public string StaffNumber { get; set; }
+    public string? StudentNumber { get; set; }
+    public string? StaffNumber { get; set; }
 
     public string PersonType { get; set; }  // Student, Academic, Researcher vb.
 
