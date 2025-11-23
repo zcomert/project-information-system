@@ -15,6 +15,8 @@ builder.Services.AddScoped<IProjectService, ProjectManager>();
 builder.Services.AddScoped<IPersonService, PersonManager>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IProjectRoleService, ProjectRoleManager>();
+builder.Services.AddScoped<IProjectRoleRepository, ProjectRoleRepository>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));

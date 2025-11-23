@@ -2,11 +2,7 @@ using PIS.Models;
 
 namespace PIS.Repositories.Contracts;
 
-public interface IPersonRepository
+public interface IPersonRepository : IRepositoryBase<Person>
 {
-    IQueryable<Person> GetAll();
-    Person? GetById(int id);
-    void Create(Person person);
-    void Update(Person person);
-    void Delete(int id);
+    
 }
