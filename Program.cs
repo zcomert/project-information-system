@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IProjectRoleRepository, ProjectRoleRepository>();
+builder.Services.AddScoped<IProjectPersonRepository, ProjectPersonRepository>();
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {

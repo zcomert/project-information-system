@@ -29,7 +29,7 @@ namespace PIS.Services
             return person;
         }
 
-        public Person GetById(int id)
+        public Person? GetById(int id)
         {
             return _repository.GetById(id);
         }

@@ -6,14 +6,14 @@ public class Person
 {
     public int Id { get; set; }
     [Required]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = string.Empty;
     [Required]
-    public string LastName { get; set; }
+    public string LastName { get; set; } = string.Empty;
 
     public string? StudentNumber { get; set; }
     public string? StaffNumber { get; set; }
 
-    public string PersonType { get; set; }  // Student, Academic, Researcher vb.
+    public string PersonType { get; set; } = string.Empty;  // Student, Academic, Researcher vb.
 
     public bool IsActive { get; set; } = true;
 

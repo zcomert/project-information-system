@@ -5,5 +5,6 @@ namespace PIS.Services.Contracts
         IPersonService PersonService { get; }
         IProjectService ProjectService { get; }
         IProjectRoleService ProjectRoleService { get; }
+        IProjectPersonService ProjectPersonService { get; }
     }
 }

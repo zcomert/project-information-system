@@ -1,18 +1,37 @@
-@model Project
+@model PIS.Models.ProjectCreateViewModel
 
 <h1>Yeni Proje</h1>
 
 <form asp-action="Create" asp-controller="ProjectManager" method="post" class="mt-3">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
     <div class="mb-3">
-        <label asp-for="Title" class="form-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+        <label asp-for="Project.Title" class="form-label">Proje Başlığı</label>
+        <input asp-for="Project.Title" class="form-control" />
+        <span asp-validation-for="Project.Title" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Budget" class="form-label"></label>
-        <input asp-for="Budget" class="form-control" />
-        <span asp-validation-for="Budget" class="text-danger"></span>
+        <label asp-for="Project.Budget" class="form-label">Bütçe</label>
+        <input asp-for="Project.Budget" class="form-control" />
+        <span asp-validation-for="Project.Budget" class="text-danger"></span>
+    </div>
+
+    <hr />
+    <h4>Kişi Atamaları</h4>
+    
+    <div class="mb-3">
+        <label asp-for="SelectedPersonIds" class="form-label">Atanacak Kişiler</label>
+        <select asp-for="SelectedPersonIds" asp-items="Model.AllPersons" class="form-control" multiple="multiple" size="8"></select>
+        <small class="form-text text-muted">Birden çok kişi seçmek için Ctrl tuşunu basılı tutun.</small>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SelectedRoleId" class="form-label">Atanacak Rol</label>
+        <select asp-for="SelectedRoleId" asp-items="Model.AllRoles" class="form-control">
+            <option value="">Lütfen bir rol seçin...</option>
+        </select>
+        <span asp-validation-for="SelectedRoleId" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Oluştur</button>
@@ -22,4 +41,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-

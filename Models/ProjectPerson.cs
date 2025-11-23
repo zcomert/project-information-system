@@ -13,7 +13,7 @@ public class ProjectPerson
         public double? Workload { get; set; }
         public string? Note { get; set; }
 
-        public Project Project { get; set; }
-        public Person Person { get; set; }
-        public ProjectRole Role { get; set; }
+        public Project Project { get; set; } = default!;
+        public Person Person { get; set; } = default!;
+        public ProjectRole Role { get; set; } = default!;
     }

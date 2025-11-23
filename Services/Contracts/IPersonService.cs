@@ -6,7 +6,7 @@ namespace PIS.Services.Contracts
     public interface IPersonService
     {
         IEnumerable<Person> GetAll();
-        Person GetById(int id);
+        Person? GetById(int id);
         Person Create(Person person);
         bool Update(Person person);
         bool Delete(int id);
