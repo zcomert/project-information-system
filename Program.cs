@@ -11,12 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Register ProjectManager as a singleton for DI
-builder.Services.AddScoped<IProjectService, ProjectManager>();
-builder.Services.AddScoped<IPersonService, PersonManager>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-builder.Services.AddScoped<IProjectRoleService, ProjectRoleManager>();
 builder.Services.AddScoped<IProjectRoleRepository, ProjectRoleRepository>();
+builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));

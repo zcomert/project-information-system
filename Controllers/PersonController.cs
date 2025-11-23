@@ -6,22 +6,22 @@ namespace PIS.Controllers
 {
     public class PersonController : Controller
     {
-        private readonly IPersonService _personService;
+        private readonly IServiceManager _serviceManager;
 
-        public PersonController(IPersonService personService)
+        public PersonController(IServiceManager serviceManager)
         {
-            _personService = personService;
+            _serviceManager = serviceManager;
         }
 
         public IActionResult Index(string query)
         {
-            var list = _personService.Search(query);
+            var list = _serviceManager.PersonService.Search(query);
             return View(list);
         }
 
         public IActionResult Details([FromRoute(Name = "id")] int id)
         {
-            var person = _personService.GetById(id);
+            var person = _serviceManager.PersonService.GetById(id);
             if (person is null)
                 return NotFound();
             return View(person);
@@ -39,7 +39,7 @@ namespace PIS.Controllers
         {
             if (ModelState.IsValid)
             {
-                _personService.Create(person);
+                _serviceManager.PersonService.Create(person);
                 return RedirectToAction(nameof(Index));
             }
             return View(person);
@@ -48,7 +48,7 @@ namespace PIS.Controllers
         [HttpGet]
         public IActionResult Update([FromRoute(Name = "id")] int id)
         {
-            var person = _personService.GetById(id);
+            var person = _serviceManager.PersonService.GetById(id);
             if (person is null)
                 return NotFound();
             return View(person);
@@ -63,7 +63,7 @@ namespace PIS.Controllers
 
             if (ModelState.IsValid)
             {
-                var ok = _personService.Update(person);
+                var ok = _serviceManager.PersonService.Update(person);
                 if (!ok)
                     return NotFound();
                 return RedirectToAction(nameof(Index));
@@ -74,7 +74,7 @@ namespace PIS.Controllers
         [HttpGet]
         public IActionResult Delete([FromRoute(Name = "id")] int id)
         {
-            var person = _personService.GetById(id);
+            var person = _serviceManager.PersonService.GetById(id);
             if (person is null)
                 return NotFound();
             return View(person);
@@ -84,7 +84,7 @@ namespace PIS.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed([FromRoute(Name = "id")] int id)
         {
-            var ok = _personService.Delete(id);
+            var ok = _serviceManager.PersonService.Delete(id);
             if (!ok)
                 return NotFound();
             return RedirectToAction(nameof(Index));
