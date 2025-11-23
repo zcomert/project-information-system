@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS "Projects" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Projects" PRIMARY KEY AUTOINCREMENT,
+    "Title" TEXT NOT NULL,
+    "Budget" TEXT NOT NULL
+);
+CREATE TABLE sqlite_sequence(name,seq);
