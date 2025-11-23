@@ -12,7 +12,9 @@ builder.Services.AddControllersWithViews();
 
 // Register ProjectManager as a singleton for DI
 builder.Services.AddScoped<IProjectService, ProjectManager>();
+builder.Services.AddScoped<IPersonService, PersonManager>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));

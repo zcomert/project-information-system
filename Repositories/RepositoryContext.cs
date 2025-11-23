@@ -10,6 +10,7 @@ namespace PIS.Repositories
         }
 
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Person> Persons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
