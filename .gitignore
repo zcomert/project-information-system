@@ -6,6 +6,12 @@
 # dotenv files
 .env
 
+Migrations/
+Logs/
+UMLs/
+
+
+
 # User-specific files
 *.rsuser
 *.suo
