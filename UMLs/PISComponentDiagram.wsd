@@ -1,0 +1,31 @@
+@startuml
+title PIS Component Diagram
+
+!theme vibrant
+
+package "PIS Application" {
+    [ASP.NET Core MVC] as MvcFramework
+
+    package "UI Layer" {
+        [Controllers]
+        [Views]
+    }
+
+    package "Business Logic" {
+        [Services]
+    }
+
+    package "Data" {
+        [Models]
+    }
+}
+
+Controllers ..> Services : uses
+Services ..> Models : uses
+Controllers ..> Models : uses
+Controllers ..> Views : uses
+
+MvcFramework -> Controllers
+MvcFramework -> Views
+
+@enduml

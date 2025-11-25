@@ -1,7 +1,22 @@
+using PIS.Models;
+using PIS.Services;
+using PIS.Services.Contracts;
+using PIS.Repositories;
+using Microsoft.EntityFrameworkCore;
+using PIS.Repositories.Contracts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Register ProjectManager as a singleton for DI
+builder.Services.AddScoped<IProjectService, ProjectManager>();
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddDbContext<RepositoryContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 

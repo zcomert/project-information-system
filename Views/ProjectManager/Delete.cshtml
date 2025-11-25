@@ -1,0 +1,17 @@
+@model Project
+
+<h1>Proje Sil</h1>
+
+<div class="alert alert-warning" role="alert">
+    <strong>Uyarı:</strong> Bu işlem geri alınamaz. Silmek istediğinize emin misiniz?
+    <ul class="mt-2">
+        <li><strong>Proje:</strong> @Model.Title</li>
+        <li><strong>Bütçe:</strong> @Model.Budget.ToString("C")</li>
+    </ul>
+    <form asp-action="Delete" asp-controller="ProjectManager" method="post" class="mt-3">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-controller="ProjectManager" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary ms-2">Vazgeç</a>
+    </form>
+</div>
+

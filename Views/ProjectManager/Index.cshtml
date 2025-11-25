@@ -1,24 +1,40 @@
-﻿@model List<Project>
+@model List<Project>
 <h1>Proje Listesi</h1>
 
-<div class="container">
-    <div class="row">
-        @foreach (var project in Model)
-        {
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">@project.Title</h5>
-                        <p class="card-text">Bütçe: @project.Budget.ToString("C")</p>
-                        @*@<a href="/ProjectManager/Details/@project.Id" 
-                        class="btn btn-primary">Detaylar</a>*@
-                        <a asp-controller="ProjectManager"
-                        asp-action="Details"
-                        asp-route-id="@project.Id"
-                        class="btn btn-primary">Detaylar  </a>
+<div class="mb-3">
+    <a asp-controller="ProjectManager" asp-action="Create" class="btn btn-success">Yeni Proje</a>
+</div>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info" role="alert">
+        Hiç proje bulunamadı. Yeni bir proje oluşturabilirsiniz.
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var project in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">@project.Title</h5>
+                            <p class="card-text">Bütçe: @project.Budget.ToString("C")</p>
+                            <a asp-controller="ProjectManager"
+                               asp-action="Details"
+                               asp-route-id="@project.Id"
+                               class="btn btn-primary">Detaylar</a>
+                            <a asp-controller="ProjectManager"
+                               asp-action="Update"
+                               asp-route-id="@project.Id"
+                               class="btn btn-warning ms-2">Güncelleme</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
-</div>
+}
+

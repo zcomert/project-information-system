@@ -3,6 +3,10 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+UMLs/
+ekran.jpg
+Migrations/
+
 # dotenv files
 .env
 

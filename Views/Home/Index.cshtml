@@ -1,8 +1,70 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Ana Sayfa";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="py-5">
+    <div class="p-5 mb-4 bg-light rounded-3 position-relative overflow-hidden"
+         style="background: radial-gradient(1200px 400px at 100% 0, rgba(13,110,253,.08), transparent 60%),
+                 radial-gradient(1200px 400px at 0 100%, rgba(25,135,84,.08), transparent 60%);">
+        <div class="py-5 text-center">
+            <h1 class="display-4 fw-bold">Proje Bilgi Sistemi</h1>
+            <p class="lead col-lg-9 mx-auto mt-3 mb-4">
+                Projelerinizi planlayın, izleyin ve raporlayın — tek bir yerde.
+            </p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <a class="btn btn-primary btn-lg px-4" asp-controller="ProjectManager" asp-action="Index">
+                    Projeleri Görüntüle
+                </a>
+                <a class="btn btn-outline-secondary btn-lg px-4" asp-controller="ProjectManager" asp-action="Create">
+                    Yeni Proje Oluştur
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="h-100 p-4 border rounded-3">
+                <h3 class="h5 mb-2">Merkezî Yönetim</h3>
+                <p class="mb-0">Tüm projelerinizi tek ekrandan takip edin, arayın ve filtreleyin.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="h-100 p-4 border rounded-3">
+                <h3 class="h5 mb-2">Hızlı İş Akışı</h3>
+                <p class="mb-0">Proje oluşturun, detayları güncelleyin ve ilerlemeyi zahmetsizce yönetin.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="h-100 p-4 border rounded-3">
+                <h3 class="h5 mb-2">Şeffaflık ve Kontrol</h3>
+                <p class="mb-0">Durum, tarih ve sorumlu bilgileriyle ekibinizle net iletişim kurun.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="row g-4 align-items-stretch">
+        <div class="col-12 col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">Projeler</h4>
+                    <p class="card-text">Var olan projeleri görüntüleyin, detaylarına gidin ve güncelleyin.</p>
+                    <a class="btn btn-outline-primary" asp-controller="ProjectManager" asp-action="Index">Projeleri Aç</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title">Yeni Proje</h4>
+                    <p class="card-text">Birkaç adımda yeni bir proje kaydı oluşturun.</p>
+                    <a class="btn btn-primary" asp-controller="ProjectManager" asp-action="Create">Yeni Proje Oluştur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
