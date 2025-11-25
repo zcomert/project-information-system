@@ -30,7 +30,7 @@ public class ProjectRepository : IProjectRepository
 
     public void Update(Project project)
     {
-        _context.Projects.Update(project);
+        _context.Entry(project).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         _context.SaveChanges();
     }
 

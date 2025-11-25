@@ -38,10 +38,6 @@ namespace PIS.Services
         {
             if (project is null)
                 throw new System.ArgumentNullException(nameof(project));
-            
-            var entity = _repository.GetById(project.Id);
-            if (entity is null)
-                return false;
 
             _repository.Update(project);
             return true;
