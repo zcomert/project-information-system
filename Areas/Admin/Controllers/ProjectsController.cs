@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PIS.Models;
 using PIS.Services.Contracts;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace PIS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "admin")]
     public class ProjectsController : Controller
     {
         private readonly IProjectService _projectService;

@@ -1,0 +1,32 @@
+@model IEnumerable<PIS.Models.Project>
+
+@{
+    ViewData["Title"] = "Projeler";
+}
+
+<h1>Projeler</h1>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Henüz proje eklenmemiş.</div>
+}
+else
+{
+    <div class="row g-3">
+        @foreach (var project in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@project.Title</h5>
+                        <div class="text-muted mb-2">Kategori: @(project.Category?.CategoryName ?? "Belirtilmedi")</div>
+                        <div class="fw-semibold mb-3">Bütçe: @project.Budget.ToString("C")</div>
+                        <a asp-controller="Projects" asp-action="Details" asp-route-id="@project.Id" class="btn btn-outline-primary">
+                            Detay
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
