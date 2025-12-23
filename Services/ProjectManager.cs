@@ -29,7 +29,7 @@ namespace PIS.Services
             return project;
         }
 
-        public Project GetById(int id)
+        public Project? GetById(int id)
         {
             return _repository.GetById(id);
         }

@@ -22,16 +22,9 @@ namespace PIS.Areas.Admin.Controllers
 
         public IActionResult Details(int id)
         {
-            var categories = _categoryService.GetAll();
-            var category = new Category();
-            foreach (var item in categories)
-            {
-                if (item.CategoryId == id)
-                {
-                    category = item;
-                    break;
-                }
-            }
+            var category = _categoryService.GetById(id);
+            if (category is null)
+                return NotFound();
             return View(category);
         }
 

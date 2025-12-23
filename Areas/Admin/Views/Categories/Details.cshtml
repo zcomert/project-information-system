@@ -39,7 +39,7 @@
                     <td>@project.Title</td>
                     <td>@project.Budget.ToString("C")</td>
                     <td>
-                        <a asp-controller="ProjectManager" asp-action="Details" asp-route-id="@project.Id" class="btn btn-info btn-sm">Detay</a>
+                        <a asp-area="Admin" asp-controller="Projects" asp-action="Details" asp-route-id="@project.Id" class="btn btn-info btn-sm">Detay</a>
                     </td>
                 </tr>
             }
@@ -49,10 +49,10 @@
 else
 {
     <div class="alert alert-info mt-3" role="alert">
-        Bu kategoriye henüz hiçbir proje eklenmemiştir.
+        Bu kategoriye henüz hiç proje eklenmemiştir.
     </div>
 }
 
-<a href="/Categories" class="btn btn-secondary mt-3">Geri Dön</a>
-<a asp-controller="Categories" asp-action="Update" asp-route-id="@Model.CategoryId" class="btn btn-warning ms-2 mt-3">Düzenle</a>
-<a asp-controller="Categories" asp-action="Delete" asp-route-id="@Model.CategoryId" class="btn btn-danger ms-2 mt-3">Sil</a>
+<a asp-area="Admin" asp-controller="Categories" asp-action="Index" class="btn btn-secondary mt-3">Geri Dön</a>
+<a asp-area="Admin" asp-controller="Categories" asp-action="Update" asp-route-id="@Model.CategoryId" class="btn btn-warning ms-2 mt-3">Düzenle</a>
+<a asp-area="Admin" asp-controller="Categories" asp-action="Delete" asp-route-id="@Model.CategoryId" class="btn btn-danger ms-2 mt-3">Sil</a>

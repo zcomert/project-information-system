@@ -1,16 +1,17 @@
 @model PIS.Models.Project
-<h1>Proje Detaylari</h1>
+
+<h1>Proje Detayları</h1>
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>Özellik</th>
-            <th>Deger</th>
+            <th>Değer</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Proje Adi</td>
+            <td>Proje Adı</td>
             <td>@Model.Title</td>
         </tr>
         <tr>
@@ -19,10 +20,11 @@
         </tr>
         <tr>
             <td>Kategori</td>
-            <td>@(Model.Category?.CategoryName ?? "Belirtilmemiş")</td>
+            <td>@(Model.Category?.CategoryName ?? "Belirtilmedi")</td>
         </tr>
     </tbody>
 </table>
 
-<a href="/ProjectManager" class="btn btn-secondary">Geri Dön</a>
-<a asp-controller="ProjectManager" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger ms-2">Sil</a>
+<a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+<a asp-area="Admin" asp-controller="Projects" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning ms-2">Güncelle</a>
+<a asp-area="Admin" asp-controller="Projects" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger ms-2">Sil</a>

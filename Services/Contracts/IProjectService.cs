@@ -6,7 +6,7 @@ namespace PIS.Services.Contracts
     public interface IProjectService
     {
         IEnumerable<Project> GetAll();
-        Project GetById(int id);
+        Project? GetById(int id);
         Project Create(Project project);
         bool Update(Project project);
         bool Delete(int id);

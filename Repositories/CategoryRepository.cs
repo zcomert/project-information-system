@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using PIS.Models;
 using PIS.Repositories.Contracts;
 
@@ -14,12 +15,14 @@ public class CategoryRepository : ICategoryRepository
 
     public IQueryable<Category> GetAll()
     {
-        return _context.Categories;
+        return _context.Categories.Include(c => c.Projects);
     }
 
     public Category? GetById(int id)
     {
-        return _context.Categories.Find(id);
+        return _context.Categories
+            .Include(c => c.Projects)
+            .FirstOrDefault(c => c.CategoryId == id);
     }
 
     public void Create(Category category)

@@ -18,9 +18,9 @@ namespace PIS.Services
             return _repository.GetAll().ToList();
         }
 
-        public Category GetById(int id)
+        public Category? GetById(int id)
         {
-            return _repository.GetById(id) ?? throw new KeyNotFoundException("Category not found.");
+            return _repository.GetById(id);
         }
 
         public Category Create(Category category)

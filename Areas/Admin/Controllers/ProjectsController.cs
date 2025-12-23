@@ -7,7 +7,8 @@ namespace PIS.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProjectsController : Controller
-    {        private readonly IProjectService _projectService;
+    {
+        private readonly IProjectService _projectService;
         private readonly ICategoryService _categoryService;
 
         public ProjectsController(IProjectService projectService, ICategoryService categoryService)
@@ -30,19 +31,11 @@ namespace PIS.Areas.Admin.Controllers
 
         public IActionResult Details([FromRoute(Name = "id")] int id)
         {
-            var list1 = _projectService.GetAll();
-            var project = new Project();
-            foreach (var item in list1)
-            {
-                if (item.Id == id)
-                {
-                    project = item;
-                    break;
-                }
-            }
-            //var project = list1.FirstOrDefault(p => p.Id == id);
+            var project = _projectService.GetById(id);
+            if (project is null)
+                return NotFound();
             string categoryName = "-";
-            if (project != null && project.Id != 0)
+            if (project.Id != 0)
             {
                 var category = _categoryService.GetById(project.CategoryId);
                 if (category != null)
