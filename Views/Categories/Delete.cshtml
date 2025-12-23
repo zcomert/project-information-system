@@ -1,0 +1,25 @@
+@model PIS.Models.Category
+
+<h1>Kategori Sil</h1>
+
+<div class="alert alert-warning" role="alert">
+    <strong>Uyarı:</strong> Bu işlem geri alınamaz. Silmek istediğinize emin misiniz?
+    <ul class="mt-2">
+        <li><strong>Kategori Adı:</strong> @Model.CategoryName</li>
+        <li><strong>Proje Sayısı:</strong> @(Model.Projects?.Count() ?? 0)</li>
+    </ul>
+    
+    @if (Model.Projects?.Any() == true)
+    {
+        <div class="alert alert-danger mt-3" role="alert">
+            <strong>Dikkat:</strong> Bu kategoriye <strong>@Model.Projects.Count()</strong> adet proje bağlı. Bu projeler de silinecektir!
+        </div>
+    }
+    
+    <form asp-action="Delete" asp-controller="Categories" method="post" class="mt-3">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.CategoryId" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-controller="Categories" asp-action="Details" asp-route-id="@Model.CategoryId" class="btn btn-secondary ms-2">Vazgeç</a>
+    </form>
+</div>

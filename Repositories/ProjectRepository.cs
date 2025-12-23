@@ -28,11 +28,35 @@ public class ProjectRepository : IProjectRepository
         _context.SaveChanges();
     }
 
-    public void Update(Project project)
+// ProjectRepository.cs içindeki Update metodu
+
+public void Update(Project project)
+{
+    // 1. Veritabanındaki mevcut kaydı bul
+    var existingProject = _context.Projects.Find(project.Id);
+
+    if (existingProject != null)
     {
-        _context.Entry(project).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        // 2. Özellikleri TEK TEK güncelle
+        // SetValues yerine bu yöntemi kullanıyoruz çünkü kontrol bizde olsun istiyoruz.
+        
+        existingProject.Title = project.Title;
+        existingProject.Budget = project.Budget;
+        
+        // Diğer güncellenmesi gereken alanlarınız varsa buraya ekleyin (örn: existingProject.Description = project.Description;)
+
+        // 3. KRİTİK KONTROL:
+        // Eğer formdan gelen CategoryId geçerli bir sayı ise (0'dan büyükse) güncelle.
+        // Eğer 0 gelmişse (hata veya boş seçim), eski kategoriye DOKUNMA.
+        if (project.CategoryId > 0)
+        {
+            existingProject.CategoryId = project.CategoryId;
+        }
+
+        // 4. Kaydet
         _context.SaveChanges();
     }
+}
 
     public void Delete(int id)
     {

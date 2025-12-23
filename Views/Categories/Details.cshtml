@@ -1,0 +1,58 @@
+@model PIS.Models.Category
+
+<h1>Kategori Detayları</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Özellik</th>
+            <th>Değer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Kategori Adı</td>
+            <td>@Model.CategoryName</td>
+        </tr>
+        <tr>
+            <td>Proje Sayısı</td>
+            <td>@(Model.Projects?.Count() ?? 0)</td>
+        </tr>
+    </tbody>
+</table>
+
+@if (Model.Projects?.Any() == true)
+{
+    <h3 class="mt-4">Bu Kategoriye Ait Projeler</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Proje Adı</th>
+                <th>Bütçe</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var project in Model.Projects)
+            {
+                <tr>
+                    <td>@project.Title</td>
+                    <td>@project.Budget.ToString("C")</td>
+                    <td>
+                        <a asp-controller="ProjectManager" asp-action="Details" asp-route-id="@project.Id" class="btn btn-info btn-sm">Detay</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info mt-3" role="alert">
+        Bu kategoriye henüz hiçbir proje eklenmemiştir.
+    </div>
+}
+
+<a href="/Categories" class="btn btn-secondary mt-3">Geri Dön</a>
+<a asp-controller="Categories" asp-action="Update" asp-route-id="@Model.CategoryId" class="btn btn-warning ms-2 mt-3">Düzenle</a>
+<a asp-controller="Categories" asp-action="Delete" asp-route-id="@Model.CategoryId" class="btn btn-danger ms-2 mt-3">Sil</a>

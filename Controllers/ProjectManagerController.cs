@@ -1,20 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using PIS.Models;
 using PIS.Services.Contracts;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PIS.Controllers
 {
     public class ProjectManagerController : Controller
     {        private readonly IProjectService _projectService;
+        private readonly ICategoryService _categoryService;
 
-        public ProjectManagerController(IProjectService projectService)
+        public ProjectManagerController(IProjectService projectService, ICategoryService categoryService)
         {
             _projectService = projectService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
         {
             var list1 = _projectService.GetAll();
+            var categories = _categoryService.GetAll();
+            
+            // Create a dictionary of CategoryId -> CategoryName for easy lookup in the view
+            var categoryDict = categories.ToDictionary(c => c.CategoryId, c => c.CategoryName ?? "-");
+            ViewBag.Categories = categoryDict;
+            
             return View(list1);
         }
 
@@ -31,6 +40,15 @@ namespace PIS.Controllers
                 }
             }
             //var project = list1.FirstOrDefault(p => p.Id == id);
+            string categoryName = "-";
+            if (project != null && project.Id != 0)
+            {
+                var category = _categoryService.GetById(project.CategoryId);
+                if (category != null)
+                    categoryName = category.CategoryName;
+            }
+            ViewBag.CategoryName = categoryName;
+
             return View(project);
         }
 
@@ -38,6 +56,8 @@ namespace PIS.Controllers
         public IActionResult Create()
         {
             var model = new Project();
+            var categories = _categoryService.GetAll();
+            ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName");
             return View(model);
         }
 
@@ -47,6 +67,8 @@ namespace PIS.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var categories = _categoryService.GetAll();
+                ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName");
                 return View(project);
             }
 
@@ -60,6 +82,8 @@ namespace PIS.Controllers
             var project = _projectService.GetById(id);
             if (project is null)
                 return NotFound();
+            var categories = _categoryService.GetAll();
+            ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName");
             return View(project);
         }
 
@@ -69,6 +93,8 @@ namespace PIS.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var categories = _categoryService.GetAll();
+                ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName");
                 return View(project);
             }
 
@@ -85,6 +111,14 @@ namespace PIS.Controllers
             var project = _projectService.GetById(id);
             if (project is null)
                 return NotFound();
+            string categoryName = "-";
+            if (project != null && project.Id != 0)
+            {
+                var category = _categoryService.GetById(project.CategoryId);
+                if (category != null)
+                    categoryName = category.CategoryName;
+            }
+            ViewBag.CategoryName = categoryName;
             return View(project);
         }
 
