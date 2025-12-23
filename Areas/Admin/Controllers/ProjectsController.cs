@@ -3,13 +3,14 @@ using PIS.Models;
 using PIS.Services.Contracts;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace PIS.Controllers
+namespace PIS.Areas.Admin.Controllers
 {
-    public class ProjectManagerController : Controller
+    [Area("Admin")]
+    public class ProjectsController : Controller
     {        private readonly IProjectService _projectService;
         private readonly ICategoryService _categoryService;
 
-        public ProjectManagerController(IProjectService projectService, ICategoryService categoryService)
+        public ProjectsController(IProjectService projectService, ICategoryService categoryService)
         {
             _projectService = projectService;
             _categoryService = categoryService;

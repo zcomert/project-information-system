@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Admin Paneli";
+}
+
+<h1>Admin Paneline Hoş Geldiniz</h1>
+<p>Proje ve kategorileri yönetmek için aşağıdaki bağlantıları kullanabilirsiniz.</p>
+
+<div class="list-group">
+    <a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="list-group-item list-group-item-action">
+        Proje Yönetimi
+    </a>
+    <a asp-area="Admin" asp-controller="Categories" asp-action="Index" class="list-group-item list-group-item-action">
+        Kategori Yönetimi
+    </a>
+</div>

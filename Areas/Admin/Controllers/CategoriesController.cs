@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using PIS.Models;
 using PIS.Services.Contracts;
 
-namespace PIS.Controllers
+namespace PIS.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
