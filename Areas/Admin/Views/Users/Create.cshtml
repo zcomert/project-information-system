@@ -1,0 +1,35 @@
+@model PIS.Areas.Admin.Models.UserCreateViewModel
+
+@{
+    ViewData["Title"] = "Kullanıcı Oluştur";
+}
+
+<h1 class="h4">Kullanıcı Oluştur</h1>
+
+<form asp-area="Admin" asp-controller="Users" asp-action="Create" method="post" class="mt-3">
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Şifre</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Role" class="form-label">Rol</label>
+        <select asp-for="Role" class="form-select" asp-items="ViewBag.Roles"></select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-area="Admin" asp-controller="Users" asp-action="Index" class="btn btn-secondary ms-2">İptal</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

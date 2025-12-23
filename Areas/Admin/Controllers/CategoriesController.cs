@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PIS.Models;
 using PIS.Services.Contracts;
@@ -5,6 +6,7 @@ using PIS.Services.Contracts;
 namespace PIS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "admin")]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
