@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using PIS.Models;
 using PIS.Services.Contracts;
 
-namespace PIS.Controllers
+namespace PIS.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
@@ -21,16 +22,9 @@ namespace PIS.Controllers
 
         public IActionResult Details(int id)
         {
-            var categories = _categoryService.GetAll();
-            var category = new Category();
-            foreach (var item in categories)
-            {
-                if (item.CategoryId == id)
-                {
-                    category = item;
-                    break;
-                }
-            }
+            var category = _categoryService.GetById(id);
+            if (category is null)
+                return NotFound();
             return View(category);
         }
 

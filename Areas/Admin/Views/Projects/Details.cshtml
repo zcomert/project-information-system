@@ -1,0 +1,30 @@
+@model PIS.Models.Project
+
+<h1>Proje Detayları</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Özellik</th>
+            <th>Değer</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Proje Adı</td>
+            <td>@Model.Title</td>
+        </tr>
+        <tr>
+            <td>Bütçe</td>
+            <td>@Model.Budget.ToString("C")</td>
+        </tr>
+        <tr>
+            <td>Kategori</td>
+            <td>@(Model.Category?.CategoryName ?? "Belirtilmedi")</td>
+        </tr>
+    </tbody>
+</table>
+
+<a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+<a asp-area="Admin" asp-controller="Projects" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning ms-2">Güncelle</a>
+<a asp-area="Admin" asp-controller="Projects" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger ms-2">Sil</a>

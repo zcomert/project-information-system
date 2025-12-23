@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using PIS.Models;
 using PIS.Repositories.Contracts;
 
@@ -14,12 +15,14 @@ public class ProjectRepository : IProjectRepository
 
     public IQueryable<Project> GetAll()
     {
-        return _context.Projects;
+        return _context.Projects.Include(p => p.Category);
     }
 
     public Project? GetById(int id)
     {
-        return _context.Projects.Find(id);
+        return _context.Projects
+            .Include(p => p.Category)
+            .FirstOrDefault(p => p.Id == id);
     }
 
     public void Create(Project project)
@@ -68,4 +71,3 @@ public void Update(Project project)
         }
     }
 }
-

@@ -1,0 +1,133 @@
+@model PIS.Areas.Admin.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="mb-1">Proje Öneri Paneli</h1>
+        <div class="text-muted">Özet metrikler ve hızlı erişimler</div>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-area="Admin" asp-controller="Projects" asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle me-1"></i> Yeni Proje
+        </a>
+        <a asp-area="Admin" asp-controller="Categories" asp-action="Create" class="btn btn-outline-secondary">
+            <i class="bi bi-tag me-1"></i> Yeni Kategori
+        </a>
+    </div>
+</div>
+
+@if (Model.TotalProjects == 0 || Model.TotalCategories == 0)
+{
+    <div class="alert alert-info">
+        @if (Model.TotalCategories == 0)
+        {
+            <div>Önce kategori ekleyip proje önerilerini daha düzenli yönetebilirsiniz.</div>
+        }
+        @if (Model.TotalProjects == 0)
+        {
+            <div>Henüz proje önerisi yok. İlk projeyi ekleyerek süreci başlatın.</div>
+        }
+    </div>
+}
+
+<div class="row g-3 mb-4">
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted">Toplam Proje</div>
+                <div class="fs-3 fw-bold">@Model.TotalProjects</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted">Toplam Kategori</div>
+                <div class="fs-3 fw-bold">@Model.TotalCategories</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted">Toplam Bütçe</div>
+                <div class="fs-3 fw-bold">@Model.TotalBudget.ToString("C")</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="text-muted">Ortalama Bütçe</div>
+                <div class="fs-3 fw-bold">@Model.AverageBudget.ToString("C")</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-12 col-lg-7">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Son Proje Önerileri</h5>
+                    <a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="btn btn-sm btn-outline-primary">Tümünü Gör</a>
+                </div>
+
+                @if (Model.RecentProjects.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var project in Model.RecentProjects)
+                        {
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-semibold">@project.Title</div>
+                                    <div class="small text-muted">@project.CategoryName ?? "Kategori yok"</div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-semibold">@project.Budget.ToString("C")</div>
+                                    <a asp-area="Admin" asp-controller="Projects" asp-action="Details" asp-route-id="@project.Id" class="small">Detay</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-muted">Henüz proje önerisi eklenmemiş.</div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">Kategori Dağılımı</h5>
+                    <a asp-area="Admin" asp-controller="Categories" asp-action="Index" class="btn btn-sm btn-outline-secondary">Kategoriler</a>
+                </div>
+
+                @if (Model.TopCategories.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var category in Model.TopCategories)
+                        {
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="fw-semibold">@category.CategoryName ?? "İsimsiz"</div>
+                                <span class="badge bg-primary rounded-pill">@category.ProjectCount</span>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-muted">Henüz kategori eklenmemiş.</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
