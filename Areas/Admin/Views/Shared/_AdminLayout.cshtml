@@ -26,6 +26,9 @@
                 <a class="list-group-item list-group-item-action p-3" asp-area="Admin" asp-controller="Categories" asp-action="Index">
                     <i class="bi bi-tags me-2"></i> Kategoriler
                 </a>
+                <a class="list-group-item list-group-item-action p-3" asp-area="Admin" asp-controller="Users" asp-action="Index">
+                    <i class="bi bi-people me-2"></i> Kullanıcılar
+                </a>
                 <a class="list-group-item list-group-item-action p-3" asp-area="" asp-controller="Home" asp-action="Index">
                     <i class="bi bi-box-arrow-left me-2"></i> Siteye Dön
                 </a>
@@ -47,12 +50,15 @@
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="bi bi-person-circle me-1"></i> Yönetici
+                                    <i class="bi bi-person-circle me-1"></i> @(User.Identity?.Name ?? "Yönetici")
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Profil</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Çıkış Yap</a>
+                                    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="px-3">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-link p-0">Çıkış Yap</button>
+                                    </form>
                                 </div>
                             </li>
                         </ul>

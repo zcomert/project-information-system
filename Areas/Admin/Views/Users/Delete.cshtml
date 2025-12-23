@@ -1,0 +1,22 @@
+@model PIS.Areas.Admin.Models.UserListItem
+
+@{
+    ViewData["Title"] = "Kullanıcı Sil";
+}
+
+<h1 class="h4">Kullanıcı Sil</h1>
+
+<div class="alert alert-warning">
+    <strong>Uyarı:</strong> Bu işlem geri alınamaz. Silmek istediğinize emin misiniz?
+    <ul class="mt-2">
+        <li><strong>Kullanıcı:</strong> @Model.UserName</li>
+        <li><strong>Roller:</strong> @Model.Roles</li>
+    </ul>
+</div>
+
+<form asp-area="Admin" asp-controller="Users" asp-action="DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-area="Admin" asp-controller="Users" asp-action="Index" class="btn btn-secondary ms-2">Vazgeç</a>
+</form>

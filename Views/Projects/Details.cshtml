@@ -1,0 +1,26 @@
+@model PIS.Models.Project
+
+@{
+    ViewData["Title"] = "Proje Detay";
+}
+
+<h1>Proje Detayı</h1>
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th>Proje</th>
+            <td>@Model.Title</td>
+        </tr>
+        <tr>
+            <th>Kategori</th>
+            <td>@(Model.Category?.CategoryName ?? "Belirtilmedi")</td>
+        </tr>
+        <tr>
+            <th>Bütçe</th>
+            <td>@Model.Budget.ToString("C")</td>
+        </tr>
+    </tbody>
+</table>
+
+<a asp-controller="Projects" asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
